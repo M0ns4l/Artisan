@@ -61,6 +61,6 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react(), tailwindcss(), seoFiles(env.VITE_SITE_URL), githubPagesSpaFallback()],
     // GitHub Pages project site: https://m0ns4l.github.io/Artisan/
-    base: '/Artisan/',
+    base: '/',
   }
 })
