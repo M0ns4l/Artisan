@@ -3,10 +3,7 @@ import tailwindcss from '@tailwindcss/vite'
 import { defineConfig, loadEnv, type Plugin } from 'vite'
 import { projects } from './src/data/projects.ts'
 
-/**
- * Emits robots.txt (always) and sitemap.xml (only when VITE_SITE_URL is set).
- * A sitemap needs absolute URLs, so we never invent a production domain.
- */
+
 function seoFiles(siteUrl: string | undefined): Plugin {
   return {
     name: 'portfolio-seo-files',
