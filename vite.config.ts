@@ -41,6 +41,6 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), 'VITE_')
   return {
     plugins: [react(), tailwindcss(), seoFiles(env.VITE_SITE_URL)],
-    base: '/Artisan/',
+    // base: '/Artisan/',
   }
 })
