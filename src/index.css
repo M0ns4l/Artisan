@@ -1,0 +1,157 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Design tokens. Light values live on :root, dark overrides on .dark.
+ * Components only reference semantic utilities (bg-surface, text-fg-muted, …),
+ * so the whole palette can be tuned here.
+ */
+:root {
+  --bg: #fcfcfa;
+  --surface: #ffffff;
+  --surface-2: #f4f4f1;
+  --border: #ebebe6;
+  --border-strong: #d9d9d2;
+  --fg: #0e1116;
+  --fg-muted: #4b5260;
+  --fg-subtle: #646b78;
+  --accent: #2f55d4;
+  --accent-hover: #2445b3;
+  --accent-fg: #ffffff;
+  --accent-soft: rgb(47 85 212 / 0.07);
+  --ink: #0e1116;
+  --ink-fg: #ffffff;
+  --ok: #15803d;
+  --warn: #b45309;
+  --info: #2f55d4;
+  --idea: #6d28d9;
+  --shadow-card: 0 1px 2px rgb(14 17 22 / 0.03), 0 4px 16px -6px rgb(14 17 22 / 0.06);
+  --shadow-raised: 0 1px 2px rgb(14 17 22 / 0.04), 0 24px 48px -20px rgb(14 17 22 / 0.18);
+}
+
+.dark {
+  --bg: #0a0c10;
+  --surface: #101319;
+  --surface-2: #161a22;
+  --border: #1e232d;
+  --border-strong: #2c3340;
+  --fg: #eef0f4;
+  --fg-muted: #a8b0bd;
+  --fg-subtle: #848d9c;
+  --accent: #86a8ff;
+  --accent-hover: #a9c1ff;
+  --accent-fg: #0a0c10;
+  --accent-soft: rgb(134 168 255 / 0.1);
+  --ink: #eef0f4;
+  --ink-fg: #0a0c10;
+  --ok: #4ade80;
+  --warn: #fbbf24;
+  --info: #86a8ff;
+  --idea: #c4b5fd;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow-raised: 0 1px 2px rgb(0 0 0 / 0.3), 0 24px 48px -20px rgb(0 0 0 / 0.7);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--border);
+  --color-line-strong: var(--border-strong);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+  --color-ink: var(--ink);
+  --color-ink-fg: var(--ink-fg);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-info: var(--info);
+  --color-idea: var(--idea);
+  --shadow-card: var(--shadow-card);
+  --shadow-raised: var(--shadow-raised);
+}
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+@layer base {
+  html {
+    background-color: var(--bg);
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    @apply bg-bg font-sans text-fg antialiased;
+    min-height: 100dvh;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--accent-fg);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer utilities {
+  .container-page {
+    width: 100%;
+    max-width: 78rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 640px) {
+    .container-page {
+      padding-inline: 1.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container-page {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* Faint engineering grid used behind the hero visual only. */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, var(--border) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

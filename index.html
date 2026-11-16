@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" style="color-scheme: light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Apply the saved theme before first paint to prevent a flash of the wrong theme. -->
+    <script>
+      ;(function () {
+        var root = document.documentElement
+        var theme = 'light'
+        try {
+          var saved = localStorage.getItem('theme')
+          if (saved === 'light' || saved === 'dark') theme = saved
+        } catch (e) {}
+        root.classList.toggle('dark', theme === 'dark')
+        root.style.colorScheme = theme
+      })()
+    </script>
+
+    <title>Monsal Dawa — Senior Programmer · Full-Stack Software Engineer</title>
+    <meta
+      name="description"
+      content="Portfolio of Monsal Dawa, a senior programmer and full-stack software engineer building secure, maintainable enterprise web applications with React, Laravel and MySQL."
+    />
+    <meta name="author" content="Monsal Dawa" />
+    <meta name="theme-color" content="#fcfcfa" />
+
+    <!-- Open Graph / Twitter defaults (route-level values are set at runtime). -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Monsal Dawa" />
+    <meta property="og:title" content="Monsal Dawa — Senior Programmer · Full-Stack Software Engineer" />
+    <meta
+      property="og:description"
+      content="Engineering software that makes complex work simpler. Enterprise web applications, APIs and workflow automation."
+    />
+    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Monsal Dawa — Senior Programmer · Full-Stack Software Engineer" />
+    <meta
+      name="twitter:description"
+      content="Engineering software that makes complex work simpler. Enterprise web applications, APIs and workflow automation."
+    />
+    <meta name="twitter:image" content="/og-image.png" />
+
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon-light.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon-light.png" media="(prefers-color-scheme: light)" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon-dark.png" media="(prefers-color-scheme: dark)" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <div style="max-width: 640px; margin: 4rem auto; padding: 0 1rem; font-family: system-ui, sans-serif">
+        <h1>Monsal Dawa</h1>
+        <p>Senior Programmer · Full-Stack Software Engineer. Please enable JavaScript to view this portfolio.</p>
+      </div>
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
