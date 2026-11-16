@@ -5,7 +5,8 @@ export default defineConfig({
   fullyParallel: true,
   reporter: 'list',
   use: {
-    baseURL: 'http://localhost:4173',
+    // Matches `base` in vite.config.ts (GitHub Pages sub-folder). Test paths are relative to it.
+    baseURL: 'http://localhost:4173/Artisan/',
     trace: 'retain-on-failure',
   },
   projects: [
@@ -14,7 +15,7 @@ export default defineConfig({
   ],
   webServer: {
     command: 'npm run build && npm run preview -- --port 4173 --strictPort',
-    url: 'http://localhost:4173',
+    url: 'http://localhost:4173/Artisan/',
     reuseExistingServer: true,
     timeout: 180_000,
   },

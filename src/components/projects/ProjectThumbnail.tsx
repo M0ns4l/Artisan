@@ -1,4 +1,5 @@
 import type { ProjectThumbnail } from '../../data/types.ts'
+import { assetUrl } from '../../lib/assets.ts'
 import { cn } from '../../lib/content.ts'
 
 interface ThumbnailImageProps {
@@ -12,7 +13,7 @@ interface ThumbnailImageProps {
 export function ThumbnailImage({ thumbnail, alt, className, eager = false }: ThumbnailImageProps) {
   return (
     <img
-      src={thumbnail.src}
+      src={assetUrl(thumbnail.src)}
       alt={alt}
       width={1672}
       height={941}

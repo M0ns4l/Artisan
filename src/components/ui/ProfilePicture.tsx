@@ -1,5 +1,6 @@
 import { useState, type ImgHTMLAttributes } from 'react'
 import { profile } from '../../data/profile.ts'
+import { assetUrl } from '../../lib/assets.ts'
 import { cn } from '../../lib/content.ts'
 
 type ProfilePictureProps = Omit<ImgHTMLAttributes<HTMLImageElement>, 'src' | 'alt'> & {
@@ -19,9 +20,9 @@ export function ProfilePicture({ className, fallbackClassName, ...props }: Profi
   }
   return (
     <picture>
-      {profile.photo.webp && <source srcSet={profile.photo.webp} type="image/webp" />}
+      {profile.photo.webp && <source srcSet={assetUrl(profile.photo.webp)} type="image/webp" />}
       <img
-        src={profile.photo.src}
+        src={assetUrl(profile.photo.src)}
         alt={profile.photo.alt}
         width={900}
         height={900}

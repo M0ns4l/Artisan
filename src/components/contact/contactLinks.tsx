@@ -1,6 +1,7 @@
 import { FileText, Mail } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { profile } from '../../data/profile.ts'
+import { assetUrl } from '../../lib/assets.ts'
 import { isConfiguredEmail, isConfiguredHref, isConfiguredUrl } from '../../lib/content.ts'
 import { FacebookIcon, GithubIcon, InstagramIcon, LinkedinIcon } from '../ui/BrandIcons.tsx'
 
@@ -25,6 +26,6 @@ export function getSocialLinks(): SocialLink[] {
   if (isConfiguredUrl(profile.instagram))
     links.push({ label: 'Instagram', href: profile.instagram, icon: <InstagramIcon />, external: true })
   if (isConfiguredHref(profile.resumeUrl))
-    links.push({ label: 'Résumé', href: profile.resumeUrl, icon: <FileText size={18} aria-hidden="true" />, external: true })
+    links.push({ label: 'Résumé', href: assetUrl(profile.resumeUrl), icon: <FileText size={18} aria-hidden="true" />, external: true })
   return links
 }

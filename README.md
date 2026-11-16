@@ -106,6 +106,16 @@ scripts/          share-image renderer
 
 ## Deployment
 
+### GitHub Pages (current setup)
+
+The site deploys to **https://m0ns4l.github.io/Artisan/** through `.github/workflows/deploy.yml` on every push to `main`.
+
+- **Base path:** `base: '/Artisan/'` in `vite.config.ts` must match the repository name. If you rename the repo, change it there. The router reads it automatically.
+- **Images and other `public/` files:** keep writing paths as `/thumbnail/x.png` in the data files. Components pass them through `assetUrl()` (`src/lib/assets.ts`), which adds the base path. If you add a new `<img>` for a `public/` file, use `assetUrl('/path')` or `` `${import.meta.env.BASE_URL}path` ``, never a bare `"/path"`. In `index.html`, use `%BASE_URL%`.
+- **Deep links and refresh:** the build writes a `404.html` copy of the app, so `/Artisan/projects/hris` works on a direct visit or reload.
+- **SEO:** set `VITE_SITE_URL=https://m0ns4l.github.io/Artisan` (in the workflow's build step `env:`) to enable the canonical URL, `sitemap.xml` and absolute share-image URLs.
+
+
 You get a static build in `dist/`. Direct links like `/projects/hris` need an SPA fallback, which is already configured for each host:
 
 - **Netlify:** `netlify.toml` plus `public/_redirects`. Connect the repo, or drag `dist/` into the Netlify dashboard.
