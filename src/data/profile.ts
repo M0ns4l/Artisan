@@ -20,8 +20,8 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/monsal-dawa-4273b2312/',
   facebook: 'https://www.facebook.com/Somnalistic',
   instagram: '[YOUR_INSTAGRAM_URL]',
-  /** Set to '/resume.pdf' after adding the file to /public. Leave empty to hide. */
-  resumeUrl: '',
+  /** Résumé PDF in /public (path is case-sensitive). Leave empty to hide every résumé button. */
+  resumeUrl: '/Resume/Monsal_Dawa_Resume.pdf',
 
   /** Transparent-background PNG; the WebP is a web-optimized copy (npm run assets:profile). */
   photo: {

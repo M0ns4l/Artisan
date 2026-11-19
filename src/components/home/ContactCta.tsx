@@ -2,6 +2,7 @@ import { ArrowRight, Clock, MapPin } from 'lucide-react'
 import { profile } from '../../data/profile.ts'
 import { isConfiguredEmail } from '../../lib/content.ts'
 import { ContactActions } from '../contact/ContactActions.tsx'
+import { ResumeButton } from '../contact/ResumeButton.tsx'
 import { SocialIconLinks } from '../contact/SocialLinks.tsx'
 import { Eyebrow } from '../ui/Badge.tsx'
 import { ButtonLink } from '../ui/Button.tsx'
@@ -27,6 +28,7 @@ export function ContactCta() {
                 <ArrowRight size={17} aria-hidden="true" className="transition-transform group-hover:translate-x-0.5" />
               </ButtonLink>
             )}
+            <ResumeButton variant="ghost" />
             <SocialIconLinks />
             <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-fg-subtle">
               <li className="inline-flex items-center gap-1.5">

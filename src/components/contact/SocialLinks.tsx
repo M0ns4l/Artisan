@@ -2,7 +2,8 @@ import { cn } from '../../lib/content.ts'
 import { getSocialLinks } from './contactLinks.tsx'
 
 export function SocialIconLinks({ className }: { className?: string }) {
-  const links = getSocialLinks()
+  // Social profiles only; the résumé has dedicated, labelled buttons.
+  const links = getSocialLinks().filter((link) => link.label !== 'Résumé')
   if (links.length === 0) return null
   return (
     <ul className={cn('flex items-center gap-1', className)}>

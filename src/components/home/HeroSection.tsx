@@ -3,6 +3,7 @@ import { m } from 'motion/react'
 import type { ReactNode } from 'react'
 import { profile } from '../../data/profile.ts'
 import { getPortfolioStats } from '../../lib/stats.ts'
+import { ResumeButton } from '../contact/ResumeButton.tsx'
 import { SocialIconLinks } from '../contact/SocialLinks.tsx'
 import { AnimatedHeadline } from '../ui/AnimatedHeadline.tsx'
 import { Eyebrow } from '../ui/Badge.tsx'
@@ -74,6 +75,7 @@ export function HeroSection() {
             <ButtonLink to="/contact" variant="secondary">
               {hero.secondaryCta}
             </ButtonLink>
+            <ResumeButton variant="ghost" />
           </FadeUp>
 
           <FadeUp delay={0.7} className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2">

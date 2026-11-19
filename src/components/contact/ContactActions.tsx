@@ -50,7 +50,7 @@ export function ContactChannelList() {
             <span className="flex min-w-0 items-center gap-3">
               <span className="text-fg-muted group-hover:text-accent">{link.icon}</span>
               <span className="shrink-0 font-medium text-fg">{link.label}</span>
-              <span className="hidden min-w-0 truncate text-sm text-fg-subtle sm:block">{link.href.replace(/^mailto:|^https?:\/\//, '')}</span>
+              <span className="hidden min-w-0 truncate text-sm text-fg-subtle sm:block">{link.detail ?? link.href.replace(/^mailto:|^https?:\/\//, '')}</span>
             </span>
             <ArrowUpRight size={16} aria-hidden="true" className="shrink-0 text-fg-subtle group-hover:text-accent" />
             {link.external && <span className="sr-only">(opens in a new tab)</span>}

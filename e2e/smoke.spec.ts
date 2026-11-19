@@ -1,6 +1,7 @@
 import { expect, test, type Page } from '@playwright/test'
+import { BASE } from './base.ts'
 
-// Relative to baseURL (http://localhost:4173/Artisan/)
+// Relative to baseURL (http://localhost:4173 + vite `base`)
 const routes = ['', 'about', 'projects', 'projects/porktrack', 'projects/truck-scale', 'experience', 'contact', 'missing-page']
 
 async function expectNoHorizontalScroll(page: Page) {
@@ -50,8 +51,8 @@ test.describe('smoke', () => {
   })
 })
 
-test.describe('GitHub Pages base path', () => {
-  test('every image and icon loads from /Artisan/', async ({ page }) => {
+test.describe('deploy base path', () => {
+  test(`every image and icon loads from ${BASE}`, async ({ page }) => {
     const failed: string[] = []
     page.on('response', (r) => {
       if (r.status() >= 400) failed.push(`${r.status()} ${r.url()}`)
@@ -71,11 +72,11 @@ test.describe('GitHub Pages base path', () => {
     const images = await page.$$eval('img', (els) => els.map((e) => ({ src: e.currentSrc || e.src, ok: e.naturalWidth > 0 })))
     expect(images.length).toBeGreaterThan(0)
     for (const img of images) {
-      expect(new URL(img.src).pathname, img.src).toMatch(/^\/Artisan\//)
+      expect(new URL(img.src).pathname.startsWith(BASE), img.src).toBe(true)
       expect(img.ok, `${img.src} should load`).toBe(true)
     }
     const icons = await page.$$eval('link[rel~="icon"], link[rel="apple-touch-icon"]', (els) => els.map((e) => e.getAttribute('href')))
-    for (const href of icons) expect(href).toMatch(/^\/Artisan\//)
+    for (const href of icons) expect(href?.startsWith(BASE), href ?? '').toBe(true)
     expect(failed).toEqual([])
   })
 

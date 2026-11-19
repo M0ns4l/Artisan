@@ -10,6 +10,8 @@ export interface SocialLink {
   href: string
   icon: ReactNode
   external: boolean
+  /** Short description shown on the Contact page instead of the raw URL. */
+  detail?: string
 }
 
 /** Only links backed by real, configured values are returned. */
@@ -26,6 +28,6 @@ export function getSocialLinks(): SocialLink[] {
   if (isConfiguredUrl(profile.instagram))
     links.push({ label: 'Instagram', href: profile.instagram, icon: <InstagramIcon />, external: true })
   if (isConfiguredHref(profile.resumeUrl))
-    links.push({ label: 'Résumé', href: assetUrl(profile.resumeUrl), icon: <FileText size={18} aria-hidden="true" />, external: true })
+    links.push({ label: 'Résumé', href: assetUrl(profile.resumeUrl), icon: <FileText size={18} aria-hidden="true" />, external: true, detail: 'PDF · opens in a new tab' })
   return links
 }
