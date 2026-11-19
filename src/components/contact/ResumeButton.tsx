@@ -1,4 +1,4 @@
-import { Download } from 'lucide-react'
+import { FileText } from 'lucide-react'
 import { profile } from '../../data/profile.ts'
 import { assetUrl } from '../../lib/assets.ts'
 import { isConfiguredHref } from '../../lib/content.ts'
@@ -11,14 +11,13 @@ interface ResumeButtonProps {
   className?: string
 }
 
-/** Downloads the résumé PDF. Renders nothing until `profile.resumeUrl` points at a real file. */
+/** Opens the résumé PDF in a new tab. Renders nothing until `profile.resumeUrl` points at a real file. */
 export function ResumeButton({ variant = 'secondary', size = 'md', className }: ResumeButtonProps) {
   if (!isConfiguredHref(profile.resumeUrl)) return null
-  const fileName = profile.resumeUrl.split('/').pop() || 'resume.pdf'
   return (
-    <ButtonAnchor href={assetUrl(profile.resumeUrl)} download={fileName} variant={variant} size={size} className={className}>
-      <Download size={17} aria-hidden="true" />
-      Download Résumé
+    <ButtonAnchor href={assetUrl(profile.resumeUrl)} external variant={variant} size={size} className={className}>
+      <FileText size={17} aria-hidden="true" />
+      View Résumé
     </ButtonAnchor>
   )
 }

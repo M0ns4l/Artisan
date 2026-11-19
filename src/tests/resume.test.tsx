@@ -9,13 +9,16 @@ describe('résumé', () => {
     expect(files).toContain(profile.resumeUrl)
   })
 
-  it('offers a download button in the hero and the contact section', () => {
+  it('opens the résumé in a new tab from the hero and the contact section', () => {
     renderApp('/')
-    const buttons = screen.getAllByRole('link', { name: /download résumé/i })
+    const buttons = screen.getAllByRole('link', { name: /view résumé/i })
     expect(buttons.length).toBeGreaterThanOrEqual(2)
     for (const b of buttons) {
       expect(b).toHaveAttribute('href', profile.resumeUrl)
-      expect(b).toHaveAttribute('download', 'Monsal_Dawa_Resume.pdf')
+      expect(b).toHaveAttribute('target', '_blank')
+      expect(b).toHaveAttribute('rel', 'noopener noreferrer')
+      expect(b).not.toHaveAttribute('download')
+      expect(b).toHaveTextContent('(opens in a new tab)')
     }
   })
 
